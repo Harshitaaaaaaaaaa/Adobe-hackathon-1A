@@ -1,79 +1,74 @@
 {
-  "title": "Foundation Level Extensions",
+  "title": "Overview Foundation Level Extensions",
   "outline": [
     {
-      "level": "H2",
-      "text": "Overview",
-      "page": 1
-    },
-    {
-      "level": "H2",
-      "text": "Version 1.0",
-      "page": 1
-    },
-    {
       "level": "H1",
+      "text": "Foundation Level Extensions",
+      "page": 1
+    },
+    {
+      "level": "H2",
       "text": "International Software Testing Qualifications Board",
       "page": 1
     },
     {
-      "level": "H2",
+      "level": "H3",
       "text": "Revision History",
       "page": 3
     },
     {
       "level": "H2",
+      "text": "0.18 JUNE 2013Initial version",
+      "page": 3
+    },
+    {
+      "level": "H2",
+      "text": "0.23 JULY 2013WG reviewed and confirmed",
+      "page": 3
+    },
+    {
+      "level": "H2",
+      "text": "0.36 NOV 2013amended population and diagram",
+      "page": 3
+    },
+    {
+      "level": "H2",
+      "text": "0.71 DEC 2013Amended Busines Outcomes and Chapters matching",
+      "page": 3
+    },
+    {
+      "level": "H2",
+      "text": "0.820 DEC 2013Working group updates on 0.7",
+      "page": 3
+    },
+    {
+      "level": "H2",
+      "text": "1.031 MAY 2014GA release for Agile Extension",
+      "page": 3
+    },
+    {
+      "level": "H3",
       "text": "Table of Contents",
       "page": 4
     },
     {
-      "level": "H2",
+      "level": "H3",
       "text": "Acknowledgements",
       "page": 5
     },
     {
-      "level": "H1",
-      "text": "Introduction to the Foundation Level Extensions",
+      "level": "H3",
+      "text": "1.Introduction to the Foundation Level Extensions",
       "page": 6
     },
     {
-      "level": "H1",
-      "text": "Introduction to Foundation Level Agile Tester Extension",
+      "level": "H3",
+      "text": "2.Introduction to Foundation Level Agile Tester Extension",
       "page": 7
     },
     {
       "level": "H3",
-      "text": "Intended Audience",
-      "page": 7
-    },
-    {
-      "level": "H1",
-      "text": "Carer Paths for Testers",
-      "page": 7
-    },
-    {
-      "level": "H2",
-      "text": "Learning Objectives",
-      "page": 7
-    },
-    {
-      "level": "H3",
-      "text": "Entry Requirements",
-      "page": 8
-    },
-    {
-      "level": "H2",
-      "text": "Structure and Course Duration",
-      "page": 8
-    },
-    {
-      "level": "H2",
-      "text": "Keping It Curent",
-      "page": 9
-    },
-    {
-      "level": "H1",
-      "text": "Overview of the Foundation Level Extension –   Agile Tester",
+      "text": "3.Overview of the Foundation Level Extension –Agile Tester",
       "page": 10
     },
     {
@@ -82,28 +77,8 @@
       "page": 10
     },
     {
-      "level": "H2",
-      "text": "Busines Outcomes",
-      "page": 10
-    },
-    {
-      "level": "H2",
-      "text": "Content",
-      "page": 10
-    },
-    {
-      "level": "H2",
-      "text": "References",
-      "page": 12
-    },
-    {
-      "level": "H2",
-      "text": "Trademarks",
-      "page": 12
-    },
-    {
-      "level": "H1",
-      "text": "Documents and Web Sites",
+      "level": "H3",
+      "text": "4.References",
       "page": 12
     }
   ]

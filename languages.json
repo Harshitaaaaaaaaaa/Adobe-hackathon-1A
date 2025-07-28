@@ -1,14 +1,14 @@
 {
   "en": {
-    "numbered_heading_regex": "^(\\d[\\d.]*|[IVXLCDM]+\\.|[A-Z]\\.)\\s+"
+    "heading_patterns": [
+      "^(Chapter|CHAPTER|Section|SECTION|Part|PART)\\s+\\d+",
+      "^\\d+(\\.\\d+)*\\s+[A-Z].*"
+    ]
   },
-  "zh": {
-    "numbered_heading_regex": "^([一二三四五六七八九十]+、|（[一二三四五六七八九十]）|\\d[\\d.]*)\\s+"
-  },
-  "fr": {
-    "numbered_heading_regex": "^(\\d[\\d.]*|[IVXLCDM]+\\.)\\s+"
-  },
-  "de": {
-    "numbered_heading_regex": "^(\\d[\\d.]*|[A-Z]\\.)\\s+"
+  "es": {
+    "heading_patterns": [
+      "^(Cap[ií]tulo|SECCI[ÓO]N|Parte)\\s+\\d+",
+      "^\\d+(\\.\\d+)*\\s+[A-ZÁÉÍÓÚÑ].*"
+    ]
   }
 }

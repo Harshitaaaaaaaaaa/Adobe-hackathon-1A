@@ -1,98 +1,115 @@
-# PDF Heading and Outline Extractor
+# 📰 Multilingual PDF Heading Extractor
 
-This Python script intelligently extracts a structured table of contents (outline) from PDF files. It uses a combination of advanced heuristics—including font styles, page layout, vertical spacing, and a weighted scoring system—to identify headings and their hierarchical levels (H1, H2, H3).
-
-The primary goal is to convert a visually structured PDF into a machine-readable JSON format, providing a clean and accurate outline of the document's contents.
-
-## ✨ Features
-
-* **Intelligent Heading Detection:** Uses a scoring system based on font size, weight, and layout to accurately identify headings.
-* **Hierarchical Outline Generation:** Automatically determines heading levels (H1, H2, H3) to create a nested, logical structure.
-* **Multi-Language Support:** Easily configurable for different languages. Comes with built-in patterns for English and Chinese, and can be extended via the `languages.json` file.
-* **Embedded ToC Priority:** Automatically uses the PDF's built-in table of contents if available for maximum accuracy.
-* **Header/Footer Filtering:** Detects and ignores repetitive text in page headers and footers to avoid including them in the outline.
-* **Dockerized & Secure:** Comes with a multi-stage `Dockerfile` for a small, fast, and secure production image.
+This project extracts **titles and headings** (H1, H2, H3) from PDF documents using [PyMuPDF](https://pymupdf.readthedocs.io/), supporting **multilingual heading detection** with customizable regex patterns (via `languages.json`).
 
 ---
 
-## 🛠️ Setup
+## 🚀 Features
 
-### Prerequisites
+- Extracts document **title and structured headings**.
+- Works for multiple languages using **language-specific heading patterns**.
+- Detects headings using:
+  - Font size and boldness
+  - Indentation
+  - Language-specific patterns (e.g. `Chapter`, `Capítulo`)
+- Supports **batch processing** of PDFs from a directory.
+- Fully containerized using **Docker**.
 
-* Python 3.9+
-* Docker (for containerized execution)
+---
 
-### Project Structure
+## 📁 Directory Structure
 
 project/
-├── Dockerfile
-├── .dockerignore
-├── languages.json
-├── process_pdfs.py
-├── requirements.txt
-├── README.md
-└── sample_datasets/
-├── pdfs/
-│   └── your_document.pdf
-└── outputs/
+├── input/ # Place input PDF files here
+├── output/ # JSON output files will be saved here
+├── process_pdfs.py # Main heading extraction script
+├── languages.json # Language-specific heading patterns
+├── requirements.txt # Python dependencies
+└── Dockerfile # For containerization
 
-
-### Installation
-
-1.  Install the required Python packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-2.  **Language Configuration (`languages.json`)**
-    This file contains regular expressions to detect numbered headings for different languages. You can easily add new languages.
-    ```json
-    {
-      "en": {
-        "numbered_heading_regex": "^(\\d[\\d.]*|[IVXLCDM]+\\.|[A-Z]\\.)\\s+"
-      },
-      "zh": {
-        "numbered_heading_regex": "^([一二三四五六七八九十]+、|（[一二三四五六七八九十]）|\\d[\\d.]*)\\s+"
-      }
-    }
-    ```
+yaml
+Copy
+Edit
 
 ---
 
-## ▶️ Usage
+## 🔧 Setup (Without Docker)
 
-### Local Execution
-
-To run the script directly on your machine:
+### 1. Install dependencies
 
 ```bash
-python process_pdfs.py ./path/to/your/pdfs ./path/to/your/outputs --lang en
---lang en: Use the English language configuration.
+pip install -r requirements.txt
+2. Run the script
+bash
+Copy
+Edit
+python process_pdfs.py input output en
+Replace en with language code like es for Spanish.
 
---lang zh: Use the Chinese language configuration.
-
-Docker Execution
-This is the recommended method for a consistent and isolated environment.
-
-Build the Docker Image:
-From the project's root directory, run:
-
-Bash
-
-docker build -t pdf-extractor .
-Run the Container:
-This command mounts your local input and output directories into the container and processes the files.
-
-Bash
-
+🐳 Using Docker (Recommended)
+1. Build Docker Image
+bash
+Copy
+Edit
+docker build -t pdf-heading-extractor .
+2. Run the container
+a. Default (English)
+bash
+Copy
+Edit
 docker run --rm \
-  -v ./sample_datasets/pdfs:/app/input \
-  -v ./sample_datasets/outputs:/app/output \
-  pdf-extractor sample_datasets/pdfs sample_datasets/outputs --lang en
---rm: Automatically removes the container after it finishes.
+  -v "$(pwd)/input:/app/input" \
+  -v "$(pwd)/output:/app/output" \
+  pdf-heading-extractor
+b. Spanish or other language
+bash
+Copy
+Edit
+docker run --rm \
+  -v "$(pwd)/input:/app/input" \
+  -v "$(pwd)/output:/app/output" \
+  pdf-heading-extractor python process_pdfs.py /app/input /app/output es
+🌐 Multilingual Support
+You can define heading patterns for any language in the languages.json file.
 
--v: Mounts a local directory into a container directory.
+Example: languages.json
+json
+Copy
+Edit
+{
+  "en": {
+    "heading_patterns": [
+      "^(Chapter|CHAPTER|Section|SECTION|Part|PART)\\s+\\d+",
+      "^\\d+(\\.\\d+)*\\s+[A-Z].*"
+    ]
+  },
+  "es": {
+    "heading_patterns": [
+      "^(Cap[ií]tulo|SECCI[ÓO]N|Parte)\\s+\\d+",
+      "^\\d+(\\.\\d+)*\\s+[A-ZÁÉÍÓÚÑ].*"
+    ]
+  }
+}
+🛠 Add more languages as needed.
 
-pdf-extractor: The name of the image you just built.
+📤 Output Format
+Each output JSON will contain:
 
-./input ./output --lang en: Arguments passed to the Python script inside the container.
+json
+Copy
+Edit
+{
+  "title": "Document Title",
+  "outline": [
+    { "level": "H1", "text": "Chapter 1 Introduction", "page": 1 },
+    { "level": "H2", "text": "Section 1.1 Motivation", "page": 1 },
+    { "level": "H3", "text": "Subsection", "page": 2 }
+  ]
+}
+🧪 Test it
+Place sample PDFs in the input/ folder.
+
+Run the Docker or Python command.
+
+Find .json files with extracted headings inside the output/ folder.
+
