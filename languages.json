@@ -1,0 +1,14 @@
+{
+  "en": {
+    "numbered_heading_regex": "^(\\d[\\d.]*|[IVXLCDM]+\\.|[A-Z]\\.)\\s+"
+  },
+  "zh": {
+    "numbered_heading_regex": "^([一二三四五六七八九十]+、|（[一二三四五六七八九十]）|\\d[\\d.]*)\\s+"
+  },
+  "fr": {
+    "numbered_heading_regex": "^(\\d[\\d.]*|[IVXLCDM]+\\.)\\s+"
+  },
+  "de": {
+    "numbered_heading_regex": "^(\\d[\\d.]*|[A-Z]\\.)\\s+"
+  }
+}
